@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Лабораторная работа 3 - Объекты и классы</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Times New Roman', Times, serif;
+            background: #f0f2f5;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            padding: 30px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+        }
+        
+        h1 {
+            font-size: 28px;
+            text-align: center;
+            margin-bottom: 20px;
+            font-weight: bold;
+            color: #2c3e50;
+        }
+        
+        h2 {
+            font-size: 24px;
+            margin: 30px 0 20px 0;
+            color: #2c3e50;
+            border-bottom: 3px solid #3498db;
+            padding-bottom: 10px;
+        }
+        
+        h3 {
+            font-size: 20px;
+            margin: 20px 0 15px 0;
+            color: #34495e;
+            background: #ecf0f1;
+            padding: 8px 15px;
+            border-radius: 5px;
+        }
+        
+        .task {
+            margin-bottom: 30px;
+            padding: 20px;
+            background: #f8f9fa;
+            border-left: 6px solid #3498db;
+            border-radius: 0 8px 8px 0;
+            page-break-inside: avoid;
+        }
+        
+        .task-number {
+            font-weight: bold;
+            color: #3498db;
+            margin-right: 10px;
+            font-size: 18px;
+        }
+        
+        pre {
+            background: #2d3436;
+            color: #dfe6e9;
+            padding: 15px;
+            border-radius: 8px;
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+            overflow-x: auto;
+            margin: 15px 0;
+            line-height: 1.6;
+        }
+        
+        .result {
+            background: #e8f4fd;
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 15px;
+            font-size: 16px;
+            line-height: 1.6;
+            border: 1px solid #bde0fe;
+        }
+        
+        .result-title {
+            font-weight: bold;
+            color: #2980b9;
+            margin-bottom: 10px;
+            font-size: 18px;
+        }
+        
+        .explanation {
+            background: #fff3cd;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 5px solid #ffc107;
+        }
+        
+        .code-block {
+            background: #2d3436;
+            color: #dfe6e9;
+            padding: 15px;
+            border-radius: 8px;
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+            margin: 10px 0;
+        }
+        
+        .warning {
+            color: #e74c3c;
+            font-weight: bold;
+        }
+        
+        .success {
+            color: #27ae60;
+            font-weight: bold;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+        }
+        
+        td, th {
+            border: 1px solid #bdc3c7;
+            padding: 10px;
+            text-align: left;
+        }
+        
+        th {
+            background: #3498db;
+            color: white;
+        }
+        
+        tr:nth-child(even) {
+            background: #f2f2f2;
+        }
+        
+        @media print {
+            body {
+                padding: 0;
+                background: white;
+            }
+            .container {
+                box-shadow: none;
+                padding: 20mm;
+            }
+            .task {
+                page-break-inside: avoid;
+            }
+            h2, h3 {
+                page-break-after: avoid;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Титульный лист -->
+        <div style="text-align: center; margin-bottom: 50px; page-break-after: always; min-height: 100vh; display: flex; flex-direction: column; justify-content: center;">
+            <h1 style="font-size: 24px; margin-top: 50px;">МИНИСТЕРСТВО НАУКИ И ВЫСШЕГО ОБРАЗОВАНИЯ</h1>
+            <h1 style="margin-top: 100px;">МИНИСТЕРСТВО ОБРАЗОВАНИЯ И НАУКИ</h1>
+            <h2 style="margin: 20px 0;">(кемеровский государственный университет)</h2>
+            <h2 style="margin: 20px 0;">(Институт цифры)</h2>
+            
+            <div style="margin: 100px 0;">
+                <h1 style="font-size: 32px;">ЛАБОРАТОРНАЯ РАБОТА №3</h1>
+                <h2 style="font-size: 24px; margin: 20px 0;">по дисциплине: "Языки программирования"</h2>
+                <h2 style="font-size: 24px;">Тема: "Объекты и классы"</h2>
+            </div>
+            
+ <div style="margin-top: 200px; text-align: right;">
+                <p><strong>Выполнил:</strong> (Киселев Максим Сергеевич)</p>
+                <p><strong>Группа:</strong> (ФИТ-241)</p>
+                <p><strong>Проверил:</strong> (Дуванов  Иван  Олегович)</p>
+            </div>
+            
+            <div style="margin-top: 100px;">
+                <p style="font-size: 18px;">2026</p>
+            </div>
+        </div>
+        
+        <h1>ЛАБОРАТОРНАЯ РАБОТА №3</h1>
+        <h2>Объекты и классы в JavaScript</h2>
+        
+        <!-- ============= ЧАСТЬ 1: ОБЪЕКТЫ ============= -->
+        <h2>Часть 1. Объекты</h2>
+        
+        <!-- Задание 1 -->
+        <div class="task">
+            <h3><span class="task-number">✓</span> Задание 1. Работа с объектом user</h3>
+            <p><strong>Условие:</strong> Создать объект user, добавить/изменить/удалить свойства.</p>
+            
+            <div class="result">
+                <div class="result-title">Результат выполнения:</div>
+                <pre id="result1">⏳ Выполняется...</pre>
+            </div>
+        </div>
+        
+        <!-- Задание 2 -->
+        <div class="task">
+            <h3><span class="task-number">✓</span> Задание 2. Объект myBrowser и цикл for...in</h3>
+            <p><strong>Условие:</strong> Создать объект myBrowser со свойствами name и version, вывести через for...in.</p>
+            
+            <div class="result">
+                <div class="result-title">Результат выполнения:</div>
+                <pre id="result2">⏳ Выполняется...</pre>
+            </div>
+        </div>
+        
+        <!-- Задание 3 -->
+        <div class="task">
+            <h3><span class="task-number">✓</span> Задание 3. Функция isEmpty(obj)</h3>
+            <p><strong>Условие:</strong> Функция возвращает true, если у объекта нет свойств, иначе false.</p>
+            
+            <div class="result">
+                <div class="result-title">Результат выполнения:</div>
+                <pre id="result3">⏳ Выполняется...</pre>
+            </div>
+        </div>
+        
+        <!-- Задание 4 -->
+        <div class="task">
+            <h3><span class="task-number">✓</span> Задание 4. const и объекты</h3>
+            <p><strong>Условие:</strong> Можно ли изменить объект, объявленный с помощью const?</p>
+            
+            <div class="result">
+                <div class="result-title">Результат выполнения:</div>
+                <pre id="result4">⏳ Выполняется...</pre>
+            </div>
+        </div>
+        
+        <!-- Задание 5 -->
+        <div class="task">
+            <h3><span class="task-number">✓</span> Задание 5. Функция multiplyNumeric(obj)</h3>
+            <p><strong>Условие:</strong> Умножить все числовые свойства объекта на 2.</p>
+            
+            <div class="result">
+                <div class="result-title">Результат выполнения:</div>
+                <pre id="result5">⏳ Выполняется...</pre>
+            </div>
+        </div>
+        
+        <!-- Задание 6 -->
+        <div class="task">
+            <h3><span class="task-number">✓</span> Задание 6. Объект calculator</h3>
+            <p><strong>Условие:</strong> Создать объект с методами read(a,b), sum(), mul().</p>
+            
+            <div class="result">
+                <div class="result-title">Результат выполнения:</div>
+                <pre id="result6">⏳ Выполняется...</pre>
+            </div>
+        </div>
+        
+        <!-- Задание 7 -->
+        <div class="task">
+            <h3><span class="task-number">✓</span> Задание 7. Цепочка вызовов (ladder)</h3>
+            <p><strong>Условие:</strong> Изменить код методов для возможности цепочки вызовов.</p>
+            
+            <div class="result">
+                <div class="result-title">Результат выполнения:</div>
+                <pre id="result7">⏳ Выполняется...</pre>
+            </div>
+        </div>
+        
+        <!-- Задание 8 -->
+        <div class="task">
+            <h3><span class="task-number">✓</span> Задание 8. Функция-конструктор Browser</h3>
+            <p><strong>Условие:</strong> Создать функцию-конструктор Browser с методом aboutBrowser().</p>
+            
+            <div class="result">
+                <div class="result-title">Результат выполнения:</div>
+                <pre id="result8">⏳ Выполняется...</pre>
+            </div>
+        </div>
+        
+        <!-- Задание 9 -->
+        <div class="task">
+            <h3><span class="task-number">✓</span> Задание 9. Объект Сотрудник</h3>
+            <p><strong>Условие:</strong> Создать объект Сотрудник с полями и методом для отображения.</p>
+            
+            <div class="result">
+                <div class="result-title">Результат выполнения:</div>
+                <pre id="result9">⏳ Выполняется...</pre>
+            </div>
+        </div>
+        
+        <!-- Задание 10 -->
+        <div class="task">
+            <h3><span class="task-number">✓</span> Задание 10. Функция-конструктор Calculator</h3>
+            <p><strong>Условие:</strong> Создать функцию-конструктор Calculator с методами read, sum, mul.</p>
+            
+            <div class="result">
+                <div class="result-title">Результат выполнения:</div>
+                <pre id="result10">⏳ Выполняется...</pre>
+            </div>
+        </div>
+        
+        <!-- Задание 11 -->
+        <div class="task">
+            <h3><span class="task-number">✓</span> Задание 11. Функция-конструктор Accumulator</h3>
+            <p><strong>Условие:</strong> Создать функцию-конструктор для накопления суммы.</p>
+            
+            <div class="result">
+                <div class="result-title">Результат выполнения:</div>
+                <pre id="result11">⏳ Выполняется...</pre>
+            </div>
+        </div>
+        
+        <!-- ============= ЧАСТЬ 2: ПРОТОТИПЫ ============= -->
+        <h2>Часть 2. Работа с прототипами</h2>
+        
+        <!-- Задание 1 (прототипы) -->
+        <div class="task">
+            <h3><span class="task-number">✓</span> Задание 1. Прототипы - animal и rabbit</h3>
+            <p><strong>Условие:</strong> Проанализировать код и объяснить результаты.</p>
+            
+            <div class="result">
+                <div class="result-title">Результат выполнения:</div>
+                <pre id="result_proto1">⏳ Выполняется...</pre>
+            </div>
+        </div>
+        
+        <!-- Задание 2 (прототипы) -->
+        <div class="task">
+            <h3><span class="task-number">✓</span> Задание 2. Прототипы - свойство full</h3>
+            <p><strong>Условие:</strong> Определить, где появится свойство full.</p>
+            
+            <div class="result">
+                <div class="result-title">Результат выполнения:</div>
+                <pre id="result_proto2">⏳ Выполняется...</pre>
+            </div>
+        </div>
+        
+        <!-- Задание 3 (прототипы) -->
+        <div class="task">
+            <h3><span class="task-number">✓</span> Задание 3. Хомяки и прототипы</h3>
+            <p><strong>Условие:</strong> Почему еда у обоих хомяков и как исправить?</p>
+            
+            <div class="result">
+                <div class="result-title">Результат выполнения:</div>
+                <pre id="result_proto3">⏳ Выполняется...</pre>
+            </div>
+        </div>
+        
+        <!-- Задание 4 (прототипы) -->
+        <div class="task">
+            <h3><span class="task-number">✓</span> Задание 4. Изменение прототипа String</h3>
+            <p><strong>Условие:</strong> Добавить свойство size и изменить метод write().</p>
+            
+            <div class="result">
+                <div class="result-title">Результат выполнения:</div>
+                <pre id="result_proto4">⏳ Выполняется...</pre>
+            </div>
+        </div>
+        
+        <!-- Задание 5 (прототипы) -->
+        <div class="task">
+            <h3><span class="task-number">✓</span> Задание 5. Изменение прототипа Rabbit</h3>
+            <p><strong>Условие:</strong> Объяснить результаты при различных изменениях прототипа.</p>
+            
+            <div class="result">
+                <div class="result-title">Результат выполнения:</div>
+                <pre id="result_proto5">⏳ Выполняется...</pre>
+            </div>
+        </div>
+        
+        <!-- ============= ЧАСТЬ 3: КЛАССЫ ============= -->
+        <h2>Часть 3. Классы (class)</h2>
+        
+        <!-- Задание 1 (классы) -->
+        <div class="task">
+            <h3><span class="task-number">✓</span> Задание 1. Класс Clock</h3>
+            <p><strong>Условие:</strong> Создать класс Clock для хранения и вывода времени.</p>
+            
+            <div class="result">
+                <div class="result-title">Результат выполнения:</div>
+                <pre id="result_class1">⏳ Выполняется...</pre>
+            </div>
+        </div>
+        
+        <!-- Задание 2 (классы) -->
+        <div class="task">
+            <h3><span class="task-number">✓</span> Задание 2. Наследование Rabbit от Animal</h3>
+            <p><strong>Условие:</strong> Исправить ошибку в коде.</p>
+            
+            <div class="result">
+                <div class="result-title">Результат выполнения:</div>
+                <pre id="result_class2">⏳ Выполняется...</pre>
+            </div>
+        </div>
+        
+        <!-- Задание 3 (классы) -->
+        <div class="task">
+            <h3><span class="task-number">✓</span> Задание 3. Класс ExtendedClock</h3>
+            <p><strong>Условие:</strong> Создать класс ExtendedClock, наследующий от Clock с параметром precision.</p>
+            
+            <div class="result">
+                <div class="result-title">Результат выполнения:</div>
+                <pre id="result_class3">⏳ Выполняется...</pre>
+            </div>
+        </div>
+        
+        <!-- Задание 4 (классы) -->
+        <div class="task">
+            <h3><span class="task-number">✓</span> Задание 4. Класс Stock (склад)</h3>
+            <p><strong>Условие:</strong> Реализовать класс для склада коробок с методами add, getByW, getByV.</p>
+            
+            <div class="result">
+                <div class="result-title">Результат выполнения:</div>
+                <pre id="result_class4">⏳ Выполняется...</pre>
+            </div>
+        </div>
+        
+        <!-- Выводы -->
+        <div style="page-break-before: always; margin-top: 50px;">
+            <h2>Выводы</h2>
+            <p style="text-indent: 1.25cm; line-height: 1.6; font-size: 16px; text-align: justify;">
+                В ходе выполнения лабораторной работы были изучены основные возможности JavaScript 
+                для работы с объектами, прототипами и классами. Были рассмотрены различные способы 
+                создания объектов, работа с их свойствами и методами. Особое внимание уделено 
+                механизму прототипного наследования в JavaScript, которое является основой 
+                объектно-ориентированного программирования в этом языке. Были изучены функции-конструкторы 
+                и современный синтаксис классов (class), а также наследование между классами. 
+                Практически были реализованы различные объекты и классы, включая сложный класс Stock 
+                для управления складом коробок. Все задания выполнены в полном объеме, код 
+                протестирован и работает корректно. Полученные знания позволяют эффективно 
+                использовать объектно-ориентированный подход при разработке на JavaScript.
+            </p>
+        </div>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>
